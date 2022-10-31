@@ -15,36 +15,37 @@
         </p>
       </mat-card-content>
       <mat-card-subtitle>Reparto</mat-card-subtitle>
-      <img
-        class="avatar-cast"
-        mat-card-avatar
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
-      <img
-        class="avatar-cast"
-        mat-card-avatar
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
-      <img
-        class="avatar-cast"
-        mat-card-avatar
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
-      <img
-        class="avatar-cast"
-        mat-card-avatar
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
-      <img
-        class="avatar-cast"
-        mat-card-avatar
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
+      <div class="grid-layout">
+        <ng-container class="col-span" *ngFor="let actor of actors">
+          <div class="reparto">
+            <img
+              class="avatar-cast"
+              mat-card-avatar
+              [src]="actor?.profile_path ? 'https://image.tmdb.org/t/p/w500/' + actor?.profile_path : '../../assets/images/profile.png'"
+              alt="Photo of a Shiba Inu"
+            /><!--{{ 'https://image.tmdb.org/t/p/w500/' + actor?.profile_path }}  -->
+            <!--  -->
+            <p>
+              {{actor?.original_name}}
+            </p>
+          </div>
+        </ng-container>
+      </div>
+      <!-- <mat-grid-list cols="10">
+        <mat-grid-tile *ngFor="let actor of actors" colspan="1" rowHeight="16px">
+          <ng-container >
+            <img
+              class="avatar-cast"
+              mat-card-avatar
+              src="{{ 'https://image.tmdb.org/t/p/w500/' + actor?.profile_path }}"
+              alt="Photo of a Shiba Inu"
+            />
+            <p>
+              {{actor?.original_name}}
+            </p>
+          </ng-container>
+        </mat-grid-tile>
+      </mat-grid-list> -->
       <br /><br />
       <mat-card-actions>
         <a mat-button routerLink="/"

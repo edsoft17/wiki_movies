@@ -21,6 +21,7 @@
             formControlName="firstName"
             name="firstName"
           />
+          <mat-error *ngIf="registerForm.controls['firstName'].errors?.['required']">{{messageError.firstName[0].message}}</mat-error>
         </mat-form-field>
         <mat-form-field class="public-form-full-width">
           <input
@@ -29,6 +30,7 @@
             formControlName="lastName"
             name="lastName"
           />
+          <mat-error *ngIf="registerForm.controls['lastName'].errors?.['required']">{{messageError.lastName[0].message}}</mat-error>
         </mat-form-field>
         <mat-form-field class="public-form-full-width">
           <input
@@ -37,6 +39,8 @@
             formControlName="email"
             name="email"
           />
+          <mat-error *ngIf="registerForm.controls['email'].errors?.['required']">{{messageError.email[0].message}}</mat-error>
+          <mat-error *ngIf="registerForm.controls['email'].errors?.['pattern']">{{messageError.email[1].message}}</mat-error>
         </mat-form-field>
         <mat-form-field class="public-form-full-width">
           <input
@@ -46,6 +50,8 @@
             formControlName="password"
             name="password"
           />
+          <mat-error *ngIf="registerForm.controls['password'].errors?.['required']">{{messageError.email[0].message}}</mat-error>
+          <mat-error *ngIf="registerForm.controls['password'].errors?.['minlength']">{{messageError.email[1].message}}</mat-error>
         </mat-form-field>
       </mat-card-content>
       <mat-card-content>
@@ -53,7 +59,6 @@
           mat-raised-button
           color="primary"
           class="btn-block"
-          [disabled]="!registerForm.valid"
         >
           <mat-icon>login</mat-icon> Registrar
         </button>

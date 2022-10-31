@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CharacterComponent } from './character/character.component';
 import { PrivateGuard } from './core/guards/private.guard';
 import { PublicGuard } from './core/guards/public.guard';
 import { LayoutComponent } from './core/layout/layout.component';
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'home',
         component: MovieComponent,
+      },
+      {
+        path: 'character',
+        component: CharacterComponent
       },
       {
         path: 'detail-movie/:idMovie',

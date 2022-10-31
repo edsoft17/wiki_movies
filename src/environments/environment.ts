@@ -12,6 +12,10 @@ export const environment = {
     getMovie: '/movie/',
     apiKey: '739d88f0ca8909ee15f7310778dcb551',
   },
+  theRickMortyApi:{
+    baseUrl: 'https://rickandmortyapi.com/api',
+    getAllCharacter: 'character'
+  },
   localStorage: {
     tokenKey: 'WM_TOKEN',
     userKey: 'WM_USER',

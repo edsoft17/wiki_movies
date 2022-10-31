@@ -10,3 +10,24 @@
 .mat-card {
   border: solid 2px #ffffff;
 }
+
+.contenido{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-layout{
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  column-gap: 10px;
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.col-span{
+  grid-column: span 1 / span 1;
+}
+
+.reparto{
+  margin-top: 10px;
+}

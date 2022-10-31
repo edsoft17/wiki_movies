@@ -12,6 +12,29 @@ import { RegisterValidationsMessages } from '../core/helpers/messages/validation
 import { UserModel } from '../core/models/user.model';
 import { AuthService } from '../core/services/auth.service';
 
+interface ErrorValid{
+  type: string;
+  message: string;
+}
+interface MessageErrorForm {
+  firstName:  ErrorValid[];
+  lastName:   ErrorValid[];
+  email:   ErrorValid[];
+  password:   ErrorValid[];
+}
+
+export interface Temperatures {
+  firstName: Email[];
+  lastName:  Email[];
+  email:     Email[];
+  password:  Email[];
+}
+
+export interface Email {
+  type:    string;
+  message: string;
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -22,6 +45,7 @@ export class RegisterComponent implements OnInit {
   templateRefModal!: TemplateRef<any>;
 
   message = '';
+  messageError!: Temperatures;
   registerForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
@@ -30,6 +54,7 @@ export class RegisterComponent implements OnInit {
     private snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {
+    this.messageError = RegisterValidationsMessages;
     this.registerForm = this.formBuilder.group({
       firstName: new FormControl('', Validators.compose([Validators.required])),
       lastName: new FormControl('', Validators.compose([Validators.required])),
@@ -46,7 +71,16 @@ export class RegisterComponent implements OnInit {
       ),
     });
   }
+
+
   handleSignUp(userToRegister: UserModel) {
+    if(this.registerForm.invalid){
+      this.snackBar.open("Debe llenar el formulario correctamente","OK",{
+        duration: 2000
+      });
+      return;
+    }
+    
     this.authService.signUp(userToRegister).subscribe({
       next: (response) => {
         this.openModal('El usuario se registró correctamente.');
